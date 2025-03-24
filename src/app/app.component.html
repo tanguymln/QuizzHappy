@@ -1,4 +1,13 @@
+@if (step === 1) {
 <app-step-user-name></app-step-user-name>
+} @if (step === 2) {
+<app-step-quizz-parameter></app-step-quizz-parameter>
+} @if (step === 3) {
+<app-step-quizz-question></app-step-quizz-question>
+}@if (step === 4) {
+<app-result></app-result>
+}
+
 <p class="absolute bottom-10 left-10 font-bold text-cyan-900 text-xl">
   Quizz Happy 😝
 </p>

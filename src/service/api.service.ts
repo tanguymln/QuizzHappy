@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceApi {
+export class apiService {
   private url: string = 'https://opentdb.com/api.php';
 
   constructor(private http: HttpClient) {}

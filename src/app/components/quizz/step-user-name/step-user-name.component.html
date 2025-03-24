@@ -3,5 +3,34 @@
     <h1>Bienvenue sur Quizz Happy 👋</h1>
     <p>Entrez votre nom et prénom</p>
   </section>
-  <section></section>
+  <section>
+    <form
+      class="flex flex-col lg:flex-row items-center gap-2 w-full"
+      (ngSubmit)="onSubmit($event)"
+    >
+      <app-text-input
+        label="Prénom"
+        name="firstname"
+        [value]="firstname"
+        (valueChange)="firstname = $event"
+        placeholder="John"
+        class="w-full"
+      ></app-text-input>
+
+      <app-text-input
+        label="Nom"
+        name="lastname"
+        [value]="lastname"
+        (valueChange)="lastname = $event"
+        placeholder="Doe"
+        class="w-full"
+      ></app-text-input>
+
+      <app-button
+        type="submit"
+        [label]="'Suivant'"
+        [color]="'primary'"
+      ></app-button>
+    </form>
+  </section>
 </main>
