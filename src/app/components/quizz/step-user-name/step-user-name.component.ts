@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-step-user-name',
   imports: [],
   templateUrl: './step-user-name.component.html',
-  styleUrl: './step-user-name.component.css'
+  styleUrl: './step-user-name.component.css',
 })
-export class StepUserNameComponent {
-
-}
+export class StepUserNameComponent {}
