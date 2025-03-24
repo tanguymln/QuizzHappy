@@ -1,1 +1,41 @@
-<p>step-quizz-parameter works!</p>
+<main>
+  <section class="sidebar">
+    <h1>Bienvenue sur Quizz Happy 👋</h1>
+    <p>Parametrez votre quizz</p>
+  </section>
+  <section>
+    <form
+      class="flex flex-col items-end gap-4 w-full"
+      (ngSubmit)="onSubmit($event)"
+    >
+      <app-select
+        label="Type de question"
+        [options]="typeOptions"
+        (selectionChange)="selectedType = $event"
+        class="w-full"
+      ></app-select>
+
+      <div class="w-full flex gap-4 items-center">
+        <app-select
+          label="Difficulté"
+          [options]="difficultyOptions"
+          (selectionChange)="selectedDifficulty = $event"
+          class="w-full"
+        ></app-select>
+
+        <app-number-input
+          label="Nombre de questions"
+          [value]="amount"
+          (valueChange)="amount = $event"
+          class="w-full"
+        ></app-number-input>
+      </div>
+
+      <app-button
+        type="submit"
+        [label]="'Suivant'"
+        [color]="'primary'"
+      ></app-button>
+    </form>
+  </section>
+</main>

@@ -1,5 +1,5 @@
 <div class="relative">
-  <label *ngIf="label" class="block text-sm font-medium mb-2">
+  <label *ngIf="label">
     {{ label }}
   </label>
   <select [(ngModel)]="selectedValue" (change)="onSelectChange()">
