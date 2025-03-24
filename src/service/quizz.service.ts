@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 interface Question {
   question: string;
@@ -21,8 +22,16 @@ export class QuizzService {
   score: number = 0;
   currentStep: number = 1;
 
+  private stepSubject = new BehaviorSubject<number>(this.currentStep);
+  public step$ = this.stepSubject.asObservable();
+
   public get getUserData(): { firstname: string; lastname: string } {
     return this.userData;
+  }
+
+  public nextStep(): void {
+    this.currentStep++;
+    this.stepSubject.next(this.currentStep);
   }
 
   public setUserData(
