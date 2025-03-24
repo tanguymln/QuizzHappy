@@ -1,0 +1,11 @@
+.btn {
+  @apply rounded-lg px-4 py-2 font-semibold transition-all text-white m-4;
+}
+
+.primary {
+  @apply ring-2 ring-sky-800 bg-sky-800 hover:bg-sky-900 text-white hover:ring-sky-900;
+}
+
+.secondary {
+  @apply ring-2 ring-sky-800 hover:bg-sky-800 text-sky-800 hover:text-white;
+}

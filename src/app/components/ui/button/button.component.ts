@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  imports: [],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.css'
+  styleUrls: ['./button.component.css'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class ButtonComponent {
+  @Input() label: string = '';
+  @Input() color: string = '';
+  @Output() btnClick = new EventEmitter<void>();
 
+  onClick() {
+    this.btnClick.emit();
+  }
 }
