@@ -1,1 +1,11 @@
-<p>select works!</p>
+<div class="relative">
+  <label *ngIf="label" class="block text-sm font-medium mb-2">
+    {{ label }}
+  </label>
+  <select [(ngModel)]="selectedValue" (change)="onSelectChange()">
+    <option value="" disabled selected>{{ label }}</option>
+    <option *ngFor="let option of options" [value]="option">
+      {{ option }}
+    </option>
+  </select>
+</div>
