@@ -5,32 +5,42 @@
   </section>
   <section>
     <form
-      class="flex flex-col lg:flex-row items-center gap-2 w-full"
+      class="flex flex-col items-end gap-5 w-full"
       (ngSubmit)="onSubmit($event)"
     >
-      <app-text-input
-        label="Prénom"
-        name="firstname"
-        [value]="firstname"
-        (valueChange)="firstname = $event"
-        placeholder="John"
-        class="w-full"
-      ></app-text-input>
+      <div class="flex flex-col w-full gap-1">
+        <div class="flex flex-col lg:flex-row gap-2 w-full">
+          <app-text-input
+            label="Prénom"
+            name="firstname"
+            [value]="firstname"
+            (valueChange)="firstname = $event"
+            placeholder="John"
+            class="w-full"
+          ></app-text-input>
 
-      <app-text-input
-        label="Nom"
-        name="lastname"
-        [value]="lastname"
-        (valueChange)="lastname = $event"
-        placeholder="Doe"
-        class="w-full"
-      ></app-text-input>
+          <app-text-input
+            label="Nom"
+            name="lastname"
+            [value]="lastname"
+            (valueChange)="lastname = $event"
+            placeholder="Doe"
+            class="w-full"
+          ></app-text-input>
+        </div>
 
-      <app-button
-        type="submit"
-        [label]="'Suivant'"
-        [color]="'primary'"
-      ></app-button>
+        <div *ngIf="errorMessage !== ''" class="text-red-400 w-full">
+          <p>{{ errorMessage }}</p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end w-full">
+        <app-button
+          type="submit"
+          [label]="'Suivant'"
+          [color]="'primary'"
+        ></app-button>
+      </div>
     </form>
   </section>
 </main>
