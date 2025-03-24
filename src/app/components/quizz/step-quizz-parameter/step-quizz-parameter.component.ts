@@ -1,4 +1,6 @@
 import { CommonModule } from '@angular/common';
+import { QuizzService } from './../../../../service/quizz.service';
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../ui/button/button.component';
@@ -16,7 +18,7 @@ import { SelectComponent } from '../../ui/select/select.component';
     SelectComponent,
   ],
   templateUrl: './step-quizz-parameter.component.html',
-  styleUrls: ['./step-quizz-parameter.component.css'],
+  styleUrl: './step-quizz-parameter.component.css',
   standalone: true,
 })
 export class StepQuizzParameterComponent {

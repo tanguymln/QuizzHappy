@@ -3,9 +3,9 @@
 }
 
 .primary {
-  @apply ring-2 ring-sky-800 bg-sky-800 hover:bg-sky-900 text-white hover:ring-sky-900;
+  @apply ring-sky-800 bg-sky-800 hover:bg-sky-900 text-white hover:ring-sky-900;
 }
 
 .secondary {
-  @apply ring-2 ring-sky-800 hover:bg-sky-800 text-sky-800 hover:text-white;
+  @apply ring-sky-800 hover:bg-sky-800 text-sky-800 hover:text-white;
 }
