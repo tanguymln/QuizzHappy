@@ -7,7 +7,7 @@ main{
 }
 
 section{
-  @apply w-full lg:w-1/2 h-1/2 lg:h-screen lg:p-10 flex flex-col justify-center;
+  @apply w-full lg:w-1/2 h-1/2 lg:h-screen p-4 lg:p-10 flex flex-col justify-center;
 }
 
 .sidebar {
@@ -20,4 +20,8 @@ section{
 
 .sidebar p{
   @apply text-sky-700 font-semibold text-xl;
+}
+
+label{
+  @apply text-cyan-700 font-semibold text-xl ps-2;
 }
