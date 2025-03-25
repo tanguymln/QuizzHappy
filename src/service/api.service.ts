@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private url: string = 'https://opentdb.com/api.php';
+  private urlCategory: string = 'https://opentdb.com/api_category.php';
 
   constructor(private http: HttpClient) {}
 
@@ -26,5 +27,9 @@ export class ApiService {
     });
 
     return this.http.get<string>(this.url, { params: httpParams });
+  }
+
+  public getCategory(): Observable<any> {
+    return this.http.get<string>(this.urlCategory);
   }
 }
