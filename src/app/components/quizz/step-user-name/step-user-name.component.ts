@@ -4,17 +4,10 @@ import { TextInputComponent } from '../../ui/text-input/text-input.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../ui/button/button.component';
-import { RadioInputComponent } from '../../ui/radio-input/radio-input.component';
 
 @Component({
   selector: 'app-step-user-name',
-  imports: [
-    CommonModule,
-    TextInputComponent,
-    ButtonComponent,
-    RadioInputComponent,
-    FormsModule,
-  ],
+  imports: [CommonModule, TextInputComponent, ButtonComponent, FormsModule],
   templateUrl: './step-user-name.component.html',
   styleUrl: './step-user-name.component.css',
 })
