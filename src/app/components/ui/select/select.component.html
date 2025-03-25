@@ -4,8 +4,8 @@
   </label>
   <select [(ngModel)]="selectedValue" (change)="onSelectChange()">
     <option value="" disabled selected>{{ label }}</option>
-    <option *ngFor="let option of options" [value]="option">
-      {{ option }}
+    <option *ngFor="let option of options" [value]="option.value">
+      {{ option.label }}
     </option>
   </select>
 </div>

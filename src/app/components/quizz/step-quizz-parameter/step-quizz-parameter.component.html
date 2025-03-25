@@ -1,11 +1,11 @@
 <main>
   <section class="sidebar">
-    <h1>Bienvenue sur Quizz Happy 👋</h1>
+    <h1>Bonjour {{ userData.firstname }} 😁,</h1>
     <p>Parametrez votre quizz</p>
   </section>
   <section>
     <form
-      class="flex flex-col items-end gap-4 w-full"
+      class="flex flex-col items-end gap-5 w-full"
       (ngSubmit)="onSubmit($event)"
     >
       <app-select
@@ -15,7 +15,7 @@
         class="w-full"
       ></app-select>
 
-      <div class="w-full flex gap-4 items-center">
+      <div class="w-full flex gap-2 items-center">
         <app-select
           label="Difficulté"
           [options]="difficultyOptions"
@@ -31,11 +31,19 @@
         ></app-number-input>
       </div>
 
-      <app-button
-        type="submit"
-        [label]="'Suivant'"
-        [color]="'primary'"
-      ></app-button>
+      <div class="flex items-center gap-2">
+        <app-button
+          type="button"
+          [label]="'Précédent'"
+          [color]="'secondary'"
+          (click)="onPrevious()"
+        ></app-button>
+        <app-button
+          type="submit"
+          [label]="'Suivant'"
+          [color]="'primary'"
+        ></app-button>
+      </div>
     </form>
   </section>
 </main>

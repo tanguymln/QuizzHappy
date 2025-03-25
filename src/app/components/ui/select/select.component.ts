@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
 })
 export class SelectComponent {
-  @Input() options: string[] = [];
+  @Input() options: { label: string; value: string }[] = [];
   @Input() label: string = '';
   @Output() selectionChange = new EventEmitter<string>();
 
