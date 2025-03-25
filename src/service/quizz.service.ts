@@ -1,7 +1,8 @@
+import { NumberInputComponent } from './../app/components/ui/number-input/number-input.component';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-interface Question {
+export interface Question {
   question: string;
   options: string[];
   correctAnswer: string;
@@ -15,12 +16,20 @@ export class QuizzService {
     firstname: '',
     lastname: '',
   };
-  quizParameters: { numberOfQuestions: number } = { numberOfQuestions: 5 };
+  quizParameters: {
+    numberOfQuestions: number;
+    categoryType: string;
+    difficulty: string;
+  } = {
+    numberOfQuestions: 5,
+    categoryType: '',
+    difficulty: '',
+  };
   questions: Question[] = [];
   userAnswers: string[] = [];
-  currentQuestionIndex: number = 0;
-  score: number = 0;
+  currentQuestionIndex: number = 1;
   currentStep: number = 1;
+  score: number = 0;
 
   private stepSubject = new BehaviorSubject<number>(this.currentStep);
   public step$ = this.stepSubject.asObservable();
@@ -30,8 +39,17 @@ export class QuizzService {
   }
 
   public nextStep(): void {
-    this.currentStep++;
-    this.stepSubject.next(this.currentStep);
+    if (this.currentStep <= 4) {
+      this.currentStep++;
+      this.stepSubject.next(this.currentStep);
+    }
+  }
+
+  public previousStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+      this.stepSubject.next(this.currentStep);
+    }
   }
 
   public setUserData(
@@ -42,13 +60,43 @@ export class QuizzService {
     return this.userData;
   }
 
+  public setQuizzParameter(
+    numberOfQuestions: number,
+    categoryType: string,
+    difficulty: string
+  ): { numberOfQuestions: number; categoryType: string; difficulty: string } {
+    this.quizParameters = { numberOfQuestions, categoryType, difficulty };
+    return this.quizParameters;
+  }
+
+  public setQuestions(questions: Question[]): Question[] {
+    this.questions = questions;
+    return this.questions;
+  }
+
   public get getCurrentStep(): number {
     return this.currentStep;
   }
 
+  public get getCurrentQuestionIndex(): number {
+    return this.currentQuestionIndex;
+  }
+
+  public get getNumberOfQuestions(): number {
+    return this.quizParameters.numberOfQuestions;
+  }
+
+  public get getQuestions(): Question[] {
+    return this.questions;
+  }
+
   public resetQuiz(): void {
     this.userData = { firstname: '', lastname: '' };
-    this.quizParameters = { numberOfQuestions: 5 };
+    this.quizParameters = {
+      numberOfQuestions: 5,
+      categoryType: '',
+      difficulty: '',
+    };
     this.questions = [];
     this.userAnswers = [];
     this.currentQuestionIndex = 0;

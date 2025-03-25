@@ -3,5 +3,5 @@ div{
 }
 
 input{
-  @apply border border-cyan-600 rounded-md p-3 text-xl w-full min-w-full;
+  @apply border border-cyan-600 rounded-md p-3 text-xl w-full min-w-full outline-cyan-800;
 }
