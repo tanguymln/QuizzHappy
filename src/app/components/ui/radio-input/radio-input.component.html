@@ -1,25 +1,30 @@
-<div class="flex flex-col">
+<div class="flex flex-col gap-3">
   <label
     *ngFor="let option of options"
-    class="flex items-center p-4 gap-1 ring-2 ring-cyan-500 rounded-lg cursor-pointer"
-    [ngClass]="{
-      'bg-cyan-500/10': selectedValue === option.value
-    }"
+    class="flex items-center p-4 gap-1 rounded-lg cursor-pointer"
+    [ngClass]="[
+      getOptionClass(option),
+      selectedValue === option ? 'bg-cyan-300/10' : ''
+    ]"
   >
     <input
       type="radio"
-      [id]="option.value"
-      [value]="option.value"
+      [id]="option"
+      [value]="option"
       [(ngModel)]="selectedValue"
       [name]="name"
       (change)="onSelectChange()"
+      class="w-fit"
+      [disabled]="isAnswer"
     />
     <span
-      class="ml-2 text-sm text-gray-700 font-bold"
+      class="ml-2 text-sm font-bold"
       [ngClass]="{
-        'text-sky-700': selectedValue === option.value
+        'text-cyan-700': selectedValue === option,
+        'text-gray-700': selectedValue !== option
       }"
-      >{{ option.label }}</span
     >
+      {{ option }}
+    </span>
   </label>
 </div>

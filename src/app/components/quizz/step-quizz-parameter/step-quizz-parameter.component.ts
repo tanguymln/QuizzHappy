@@ -83,14 +83,14 @@ export class StepQuizzParameterComponent {
           (item: {
             question: string;
             correct_answer: string;
-            incorrect_answers: string;
+            incorrect_answers: string[];
           }) => ({
-            question: btoa(item.question),
+            question: atob(item.question),
             options: [
-              ...btoa(item.incorrect_answers),
-              btoa(item.correct_answer),
+              ...item.incorrect_answers.map(atob),
+              atob(item.correct_answer),
             ],
-            correctAnswer: btoa(item.correct_answer),
+            correctAnswer: atob(item.correct_answer),
           })
         );
         this.quizzService.setQuestions(questions);

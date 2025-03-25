@@ -69,6 +69,11 @@ export class QuizzService {
     return this.quizParameters;
   }
 
+  public setCurrentQuestionIndex(index: number): number {
+    this.currentQuestionIndex = index;
+    return this.currentQuestionIndex;
+  }
+
   public setQuestions(questions: Question[]): Question[] {
     this.questions = questions;
     return this.questions;
@@ -88,6 +93,15 @@ export class QuizzService {
 
   public get getQuestions(): Question[] {
     return this.questions;
+  }
+
+  public get incrementScore(): number {
+    this.score += 1;
+    return this.score;
+  }
+
+  public get getScore(): number {
+    return this.score;
   }
 
   public resetQuiz(): void {

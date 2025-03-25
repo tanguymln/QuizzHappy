@@ -1,8 +1,36 @@
 <main>
   <section class="sidebar">
     <h1>Question {{ currentQuestionIndex }} sur {{ numberOfQuestions }}</h1>
-    <p class="question">currentQuesiton</p>
+    <p class="question">{{ questions[currentQuestionIndex - 1].question }}</p>
     <p>Sélectionner une réponse</p>
   </section>
-  <section></section>
+  <section>
+    <div class="flex flex-col gap-5">
+      <app-radio-input
+        [options]="questions[currentQuestionIndex - 1].options"
+        [name]="'question'"
+        [correctAnswer]="questions[currentQuestionIndex - 1].correctAnswer"
+        [isAnswer]="isAnswer"
+        (selectedValueChange)="onAnswerSelected($event)"
+      ></app-radio-input>
+      <div class="w-full flex items-center justify-end">
+        <app-button
+          *ngIf="!isAnswer"
+          color="primary"
+          label="Voir la réponse"
+          (click)="showAnswer()"
+        ></app-button>
+        <app-button
+          *ngIf="isAnswer"
+          color="primary"
+          (click)="onNextQuestion()"
+          [label]="
+            currentQuestionIndex === numberOfQuestions
+              ? 'Voir mon score'
+              : 'Question suivante'
+          "
+        ></app-button>
+      </div>
+    </div>
+  </section>
 </main>
