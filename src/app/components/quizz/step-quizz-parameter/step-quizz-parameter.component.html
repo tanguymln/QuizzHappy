@@ -26,10 +26,16 @@
         <app-number-input
           label="Nombre de questions"
           [value]="amount"
-          (valueChange)="amount = $event"
           class="w-full"
+          minValue="5"
+          maxValue="100"
+          (valueChange)="onAmountChange($event)"
         ></app-number-input>
       </div>
+
+      <p *ngIf="errorMessage !== ''" class="text-red-400 w-full">
+        {{ errorMessage }}
+      </p>
 
       <div class="flex items-center gap-2">
         <app-button
@@ -40,7 +46,7 @@
         ></app-button>
         <app-button
           type="submit"
-          [label]="'Suivant'"
+          [label]="'Démarrer le quizz'"
           [color]="'primary'"
         ></app-button>
       </div>

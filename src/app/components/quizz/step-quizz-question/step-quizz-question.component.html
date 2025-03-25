@@ -7,7 +7,7 @@
   <section>
     <div class="flex flex-col gap-5">
       <app-radio-input
-        [options]="questions[currentQuestionIndex - 1].options"
+        [options]="questions[currentQuestionIndex - 1].options | shuffle"
         [name]="'question'"
         [correctAnswer]="questions[currentQuestionIndex - 1].correctAnswer"
         [isAnswer]="isAnswer"

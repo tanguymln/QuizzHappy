@@ -11,7 +11,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class NumberInputComponent {
   @Input() label: string = '';
-  @Input() value: number | null = null;
+  @Input() value: number = 5;
+  @Input() minValue: string = '1';
+  @Input() maxValue: string = '100';
+
   @Output() valueChange = new EventEmitter<number>();
 
   onInput(event: Event) {

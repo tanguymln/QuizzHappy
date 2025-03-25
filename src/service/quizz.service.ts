@@ -104,7 +104,7 @@ export class QuizzService {
     return this.score;
   }
 
-  public resetQuiz(): void {
+  public resetQuizz(): void {
     this.userData = { firstname: '', lastname: '' };
     this.quizParameters = {
       numberOfQuestions: 5,
@@ -116,5 +116,6 @@ export class QuizzService {
     this.currentQuestionIndex = 0;
     this.score = 0;
     this.currentStep = 1;
+    this.stepSubject.next(this.currentStep);
   }
 }

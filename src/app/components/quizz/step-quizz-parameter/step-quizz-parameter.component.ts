@@ -33,12 +33,14 @@ export class StepQuizzParameterComponent {
 
   selectedType: string = '';
   selectedDifficulty: string = '';
-  amount: number = 0;
+  amount: number = 5;
 
   userData: { firstname: string; lastname: string } = {
     firstname: '',
     lastname: '',
   };
+
+  errorMessage: string = '';
   constructor(
     private quizzService: QuizzService,
     private apiService: ApiService
@@ -54,6 +56,10 @@ export class StepQuizzParameterComponent {
           label: cat.name,
           value: cat.id,
         }));
+
+        if (this.typeOptions.length > 0) {
+          this.selectedType = this.typeOptions[0].value;
+        }
       }
     } catch (error) {
       console.error('Erreur lors de la récupération des catégories', error);
@@ -63,12 +69,19 @@ export class StepQuizzParameterComponent {
   async onSubmit(event: Event): Promise<void> {
     event.preventDefault();
 
+    // TODO : Mieux gérer selectedDifficulty et selectedType car pas de choix == tous types pour l'api
     if (
-      this.selectedDifficulty !== '' ||
-      this.selectedType !== '' ||
-      this.amount >= 5 ||
+      this.selectedDifficulty !== '' &&
+      this.selectedType !== '' &&
+      this.amount >= 5 &&
       this.amount <= 20
     ) {
+      this.quizzService.setQuizzParameter(
+        this.amount,
+        this.selectedType,
+        this.selectedDifficulty
+      );
+
       const response = await firstValueFrom(
         this.apiService.get({
           amount: this.amount,
@@ -98,10 +111,17 @@ export class StepQuizzParameterComponent {
       } else {
         console.log('Error');
       }
+    } else {
+      this.errorMessage =
+        'Veuillez remplir tous les champs avec des informations valide';
     }
   }
 
   onPrevious(): void {
     this.quizzService.previousStep();
+  }
+
+  onAmountChange(value: number) {
+    this.amount = value;
   }
 }

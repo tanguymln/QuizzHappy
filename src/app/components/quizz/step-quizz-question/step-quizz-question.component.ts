@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { Question, QuizzService } from '../../../../service/quizz.service';
 import { RadioInputComponent } from '../../ui/radio-input/radio-input.component';
 import { ButtonComponent } from '../../ui/button/button.component';
+import { ShufflePipe } from '../../../../pipe/shuffle.pipe';
 
 @Component({
   selector: 'app-step-quizz-question',
-  imports: [CommonModule, RadioInputComponent, ButtonComponent],
+  imports: [CommonModule, RadioInputComponent, ButtonComponent, ShufflePipe],
   templateUrl: './step-quizz-question.component.html',
   styleUrl: './step-quizz-question.component.css',
 })
@@ -21,8 +22,6 @@ export class StepQuizzQuestionComponent {
     this.currentQuestionIndex = this.quizzService.getCurrentQuestionIndex;
     this.numberOfQuestions = this.quizzService.quizParameters.numberOfQuestions;
     this.questions = this.quizzService.getQuestions;
-
-    console.log(this.questions[this.currentQuestionIndex - 1]);
   }
 
   showAnswer() {
@@ -33,13 +32,13 @@ export class StepQuizzQuestionComponent {
       this.questions[this.currentQuestionIndex - 1].correctAnswer
     ) {
       this.quizzService.incrementScore;
-      console.log(this.quizzService.getScore);
     }
   }
 
   onNextQuestion() {
     if (this.currentQuestionIndex < this.numberOfQuestions) {
       this.isAnswer = false;
+      this.selectedValue = ' ';
       this.currentQuestionIndex++;
       this.quizzService.setCurrentQuestionIndex(this.currentQuestionIndex);
     } else {

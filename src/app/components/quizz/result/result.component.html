@@ -1,1 +1,12 @@
-<p>result works!</p>
+<main>
+  <section class="sidebar">
+    <h1>Bravo {{ userData.firstname }} 🎉</h1>
+    <p>Vous avez fini ce quizz avec succès !</p>
+  </section>
+  <section>
+    <p>{{ (score * 100) / numberOfQuestions }} %</p>
+    <p>Vous avez {{ score }} bonne réponse(s) sur {{ numberOfQuestions }}</p>
+    <app-button color="primary" label="Recommencer" (click)="resetQuizz()">
+    </app-button>
+  </section>
+</main>
