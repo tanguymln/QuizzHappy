@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-3">
+  <label
+    *ngFor="let option of options"
+    class="flex items-center p-4 gap-1 rounded-lg cursor-pointer"
+    [ngClass]="[
+      getOptionClass(option),
+      selectedValues.includes(option) ? 'bg-cyan-300/10' : ''
+    ]"
+  >
+    <input
+      type="checkbox"
+      [id]="option"
+      [value]="option"
+      [name]="name"
+      (change)="onSelectChange(option)"
+      class="w-fit"
+      [disabled]="isAnswer"
+    />
+    <span
+      class="ml-2 text-sm font-bold"
+      [ngClass]="{
+        'text-cyan-700': selectedValues.includes(option),
+        'text-gray-700': !selectedValues.includes(option)
+      }"
+    >
+      {{ option }}
+    </span>
+  </label>
+</div>

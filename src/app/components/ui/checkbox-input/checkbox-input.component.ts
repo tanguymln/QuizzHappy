@@ -3,24 +3,34 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-radio-input',
-  templateUrl: './radio-input.component.html',
-  styleUrl: './radio-input.component.css',
+  selector: 'app-checkbox-input',
+  templateUrl: './checkbox-input.component.html',
+  styleUrl: './checkbox-input.component.css',
   standalone: true,
   imports: [CommonModule, FormsModule],
 })
-export class RadioInputComponent {
+export class CheckboxInputComponent {
   @Input() label: string = '';
   @Input() name: string = '';
   @Input() options: string[] = [];
   @Input() correctAnswer: string[] = [];
   @Input() isAnswer: boolean = false;
 
-  @Output() selectedValueChange = new EventEmitter<string>();
+  @Output() selectedValueChange = new EventEmitter<string[]>();
 
-  selectedValue: string = '';
-  onSelectChange() {
-    this.selectedValueChange.emit(this.selectedValue);
+  selectedValues: string[] = [];
+
+  onSelectChange(option: string) {
+    if (Array.isArray(this.selectedValues)) {
+      if (this.selectedValues.includes(option)) {
+        this.selectedValues = this.selectedValues.filter(
+          (val) => val !== option
+        );
+      } else {
+        this.selectedValues.push(option);
+      }
+      this.selectedValueChange.emit(this.selectedValues);
+    }
   }
 
   getOptionClass(option: string) {

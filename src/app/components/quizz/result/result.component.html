@@ -1,7 +1,7 @@
 <main>
   <section class="sidebar">
-    <h1>Bravo {{ userData.firstname }} 🎉</h1>
-    <p>Vous avez fini ce quizz avec succès !</p>
+    <h1>Congratulations {{ userData.firstname }} 🎉</h1>
+    <p>You have successfully completed this quiz !</p>
   </section>
   <section class="items-center gap-y-4">
     <div
@@ -15,13 +15,11 @@
         {{ (score * 100) / numberOfQuestions }} %
       </p>
       <p class="md:text-3xl text-2xl font-semibold text-sky-800 text-center">
-        Vous avez {{ score }} bonne{{ score > 1 ? "s" : "" }} réponse{{
-          score > 1 ? "s" : ""
-        }}
-        sur
+        You have {{ score }} correct answer{{ score > 1 ? "s" : "" }}
+        out of
         {{ numberOfQuestions }} !
       </p>
-      <app-button color="primary" label="Recommencer" (click)="resetQuizz()">
+      <app-button color="primary" label="Start again" (click)="resetQuizz()">
       </app-button>
     </div>
   </section>

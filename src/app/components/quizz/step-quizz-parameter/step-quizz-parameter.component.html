@@ -1,7 +1,7 @@
 <main>
   <section class="sidebar">
-    <h1>Bonjour {{ userData.firstname }} 😁,</h1>
-    <p>Parametrez votre quizz</p>
+    <h1>Hello {{ userData.firstname }} 😁,</h1>
+    <p>Set up your quiz</p>
   </section>
   <section>
     <form
@@ -12,17 +12,26 @@
       }"
       (ngSubmit)="onSubmit($event)"
     >
-      <app-select
-        label="Type de question"
-        [options]="typeOptions"
-        (selectionChange)="selectedType = $event"
-        (keydown.enter)="$event.preventDefault()"
-        class="w-full"
-      ></app-select>
+      <div class="w-full flex lg:flex-row flex-col gap-5 md:gap-2 items-center">
+        <app-select
+          label="Question category"
+          [options]="typeOptions"
+          (selectionChange)="selectedType = $event"
+          (keydown.enter)="$event.preventDefault()"
+          class="w-full"
+        ></app-select>
+        <app-select
+          label="Response type"
+          [options]="answerOptions"
+          (selectionChange)="selectedAnswerType = $event"
+          (keydown.enter)="$event.preventDefault()"
+          class="w-full"
+        ></app-select>
+      </div>
 
       <div class="w-full flex lg:flex-row flex-col gap-5 md:gap-2 items-center">
         <app-select
-          label="Difficulté"
+          label="Difficulty"
           [options]="difficultyOptions"
           (selectionChange)="selectedDifficulty = $event"
           (keydown.enter)="$event.preventDefault()"
@@ -30,7 +39,7 @@
         ></app-select>
 
         <app-number-input
-          label="Nombre de questions"
+          label="Nomber of questions"
           [value]="amount"
           class="w-full"
           minValue="5"
@@ -47,13 +56,13 @@
       <div class="flex items-center gap-2">
         <app-button
           type="button"
-          [label]="'Précédent'"
+          [label]="'Previous'"
           [color]="'secondary'"
           (click)="onPrevious()"
         ></app-button>
         <app-button
           type="submit"
-          [label]="isMobile() ? 'Démarrer' : 'Démarrer le quizz'"
+          [label]="isMobile() ? 'Start' : 'Start the quizz'"
           [color]="'primary'"
         ></app-button>
       </div>
