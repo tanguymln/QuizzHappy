@@ -16,6 +16,7 @@
         label="Type de question"
         [options]="typeOptions"
         (selectionChange)="selectedType = $event"
+        (keydown.enter)="$event.preventDefault()"
         class="w-full"
       ></app-select>
 
@@ -24,6 +25,7 @@
           label="Difficulté"
           [options]="difficultyOptions"
           (selectionChange)="selectedDifficulty = $event"
+          (keydown.enter)="$event.preventDefault()"
           class="w-full"
         ></app-select>
 
@@ -34,6 +36,7 @@
           minValue="5"
           maxValue="100"
           (valueChange)="onAmountChange($event)"
+          (keydown.enter)="$event.preventDefault()"
         ></app-number-input>
       </div>
 

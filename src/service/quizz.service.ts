@@ -113,7 +113,7 @@ export class QuizzService {
     };
     this.questions = [];
     this.userAnswers = [];
-    this.currentQuestionIndex = 0;
+    this.currentQuestionIndex = 1;
     this.score = 0;
     this.currentStep = 1;
     this.stepSubject.next(this.currentStep);
