@@ -12,13 +12,22 @@
       }"
       (ngSubmit)="onSubmit($event)"
     >
-      <app-select
-        label="Type of questions"
-        [options]="typeOptions"
-        (selectionChange)="selectedType = $event"
-        (keydown.enter)="$event.preventDefault()"
-        class="w-full"
-      ></app-select>
+      <div class="w-full flex lg:flex-row flex-col gap-5 md:gap-2 items-center">
+        <app-select
+          label="Question category"
+          [options]="typeOptions"
+          (selectionChange)="selectedType = $event"
+          (keydown.enter)="$event.preventDefault()"
+          class="w-full"
+        ></app-select>
+        <app-select
+          label="Response type"
+          [options]="answerOptions"
+          (selectionChange)="selectedAnswerType = $event"
+          (keydown.enter)="$event.preventDefault()"
+          class="w-full"
+        ></app-select>
+      </div>
 
       <div class="w-full flex lg:flex-row flex-col gap-5 md:gap-2 items-center">
         <app-select

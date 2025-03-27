@@ -15,13 +15,14 @@ export class ApiService {
     amount: number;
     category: string;
     difficulty: string;
+    type: string;
   }): Observable<any> {
     const httpParams = new HttpParams({
       fromObject: {
         amount: params.amount.toString(),
         category: params.category,
         difficulty: params.difficulty,
-        type: '',
+        type: params.type,
         encode: 'base64',
       },
     });
