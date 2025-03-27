@@ -21,7 +21,7 @@ export class ApiService {
         amount: params.amount.toString(),
         category: params.category,
         difficulty: params.difficulty,
-        type: 'multiple',
+        type: '',
         encode: 'base64',
       },
     });
