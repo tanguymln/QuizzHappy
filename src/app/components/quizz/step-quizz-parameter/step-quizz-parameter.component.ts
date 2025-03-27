@@ -91,6 +91,7 @@ export class StepQuizzParameterComponent {
             question: string;
             correct_answer: string;
             incorrect_answers: string[];
+            difficulty: string;
           }) => ({
             question: atob(item.question),
             options: [
@@ -98,6 +99,7 @@ export class StepQuizzParameterComponent {
               atob(item.correct_answer),
             ],
             correctAnswer: atob(item.correct_answer),
+            difficulty: atob(item.difficulty),
           })
         );
         this.quizzService.setQuestions(questions);
@@ -117,5 +119,9 @@ export class StepQuizzParameterComponent {
 
   onAmountChange(value: number) {
     this.amount = value;
+  }
+
+  isMobile(): boolean {
+    return window.innerWidth <= 768
   }
 }
