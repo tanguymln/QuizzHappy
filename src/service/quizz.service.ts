@@ -1,4 +1,3 @@
-import { NumberInputComponent } from './../app/components/ui/number-input/number-input.component';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,6 +5,7 @@ export interface Question {
   question: string;
   options: string[];
   correctAnswer: string;
+  difficulty: string;
 }
 
 @Injectable({

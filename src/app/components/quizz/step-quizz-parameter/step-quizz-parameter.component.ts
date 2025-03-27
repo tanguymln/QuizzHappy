@@ -59,14 +59,14 @@ export class StepQuizzParameterComponent {
     try {
       const response = await firstValueFrom(this.apiService.getCategory());
       if (response.trivia_categories) {
-        this.typeOptions = response.trivia_categories.map((cat: any) => ({
+        const typesOfQuestion = response.trivia_categories.map((cat: any) => ({
           label: cat.name,
           value: cat.id,
         }));
-
-        if (this.typeOptions.length > 0) {
-          this.selectedType = this.typeOptions[0].value;
-        }
+        this.typeOptions = [
+          { label: 'Any Categories', value: '' },
+          ...typesOfQuestion,
+        ];
       }
     } catch (error) {
       console.error('Erreur lors de la récupération des catégories', error);
@@ -76,13 +76,7 @@ export class StepQuizzParameterComponent {
   async onSubmit(event: Event): Promise<void> {
     event.preventDefault();
 
-    // TODO : Mieux gérer selectedDifficulty et selectedType car pas de choix == tous types pour l'api
-    if (
-      this.selectedDifficulty !== '' &&
-      this.selectedType !== '' &&
-      this.amount >= 5 &&
-      this.amount <= 20
-    ) {
+    if (this.amount >= 5 && this.amount <= 20) {
       this.quizzService.setQuizzParameter(
         this.amount,
         this.selectedType,
@@ -104,6 +98,7 @@ export class StepQuizzParameterComponent {
             question: string;
             correct_answer: string;
             incorrect_answers: string[];
+            difficulty: string;
           }) => ({
             question: atob(item.question),
             options: [
@@ -111,6 +106,7 @@ export class StepQuizzParameterComponent {
               atob(item.correct_answer),
             ],
             correctAnswer: atob(item.correct_answer),
+            difficulty: atob(item.difficulty),
           })
         );
         this.quizzService.setQuestions(questions);
@@ -130,5 +126,9 @@ export class StepQuizzParameterComponent {
 
   onAmountChange(value: number) {
     this.amount = value;
+  }
+
+  isMobile(): boolean {
+    return window.innerWidth <= 768
   }
 }

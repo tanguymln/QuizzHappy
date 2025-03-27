@@ -19,7 +19,7 @@
         class="w-full"
       ></app-select>
 
-      <div class="w-full flex lg:flex-row flex-col gap-2 items-center">
+      <div class="w-full flex lg:flex-row flex-col gap-5 md:gap-2 items-center">
         <app-select
           label="Difficulté"
           [options]="difficultyOptions"
@@ -50,7 +50,7 @@
         ></app-button>
         <app-button
           type="submit"
-          [label]="'Démarrer le quizz'"
+          [label]="isMobile() ? 'Démarrer' : 'Démarrer le quizz'"
           [color]="'primary'"
         ></app-button>
       </div>
