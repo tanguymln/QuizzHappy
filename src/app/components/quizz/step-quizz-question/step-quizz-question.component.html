@@ -1,8 +1,8 @@
 <main>
   <section class="sidebar">
-    <h1>Question {{ currentQuestionIndex }} sur {{ numberOfQuestions }}</h1>
+    <h1>Question {{ currentQuestionIndex }} of {{ numberOfQuestions }}</h1>
     <p class="question">{{ questions[currentQuestionIndex - 1].question }}</p>
-    <p>Sélectionner une réponse</p>
+    <p>Select an answer</p>
   </section>
   <section>
     <div
@@ -36,7 +36,7 @@
         <app-button
           *ngIf="!isAnswer"
           color="primary"
-          label="Voir la réponse"
+          label="See the answer"
           (click)="showAnswer()"
         ></app-button>
         <app-button
@@ -45,8 +45,8 @@
           (click)="onNextQuestion()"
           [label]="
             currentQuestionIndex === numberOfQuestions
-              ? 'Voir mon score'
-              : 'Question suivante'
+              ? 'See my score'
+              : 'Next question'
           "
         ></app-button>
       </div>

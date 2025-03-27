@@ -1,7 +1,7 @@
 <main>
   <section class="sidebar">
-    <h1>Bienvenue sur Quizz Happy 👋</h1>
-    <p>Entrez votre nom et prénom</p>
+    <h1>Welcome to Quizz Happy 👋</h1>
+    <p>Enter your first and last name</p>
   </section>
   <section>
     <form
@@ -15,7 +15,7 @@
       <div class="flex flex-col w-full gap-1">
         <div class="flex flex-col lg:flex-row gap-2 w-full">
           <app-text-input
-            label="Prénom"
+            label="Firstname"
             name="firstname"
             [value]="firstname"
             (valueChange)="firstname = $event"
@@ -24,7 +24,7 @@
           ></app-text-input>
 
           <app-text-input
-            label="Nom"
+            label="Name"
             name="lastname"
             [value]="lastname"
             (valueChange)="lastname = $event"
@@ -41,7 +41,7 @@
       <div class="flex items-center justify-end w-full">
         <app-button
           type="submit"
-          [label]="'Suivant'"
+          [label]="'Next'"
           [color]="'primary'"
         ></app-button>
       </div>
