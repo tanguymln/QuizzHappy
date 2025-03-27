@@ -3,9 +3,19 @@
     <h1>Bravo {{ userData.firstname }} 🎉</h1>
     <p>Vous avez fini ce quizz avec succès !</p>
   </section>
-  <section>
-    <p>{{ (score * 100) / numberOfQuestions }} %</p>
-    <p>Vous avez {{ score }} bonne réponse(s) sur {{ numberOfQuestions }}</p>
+  <section class="items-center gap-y-4">
+    <div class="p-4 flex flex-col gap-y-4 w-full items-center">
+      <p class="font-black md:text-5xl text-4xl text-sky-800 text-center">
+        {{ (score * 100) / numberOfQuestions }} %
+      </p>
+      <p class="md:text-3xl text-2xl font-semibold text-sky-800 text-center">
+        Vous avez {{ score }} bonne{{ score > 1 ? "s" : "" }} réponse{{
+          score > 1 ? "s" : ""
+        }}
+        sur
+        {{ numberOfQuestions }} !
+      </p>
+    </div>
     <app-button color="primary" label="Recommencer" (click)="resetQuizz()">
     </app-button>
   </section>

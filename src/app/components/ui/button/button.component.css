@@ -1,5 +1,5 @@
 .btn {
-  @apply rounded-lg px-6 py-3 font-semibold transition-all text-white;
+  @apply rounded-lg px-6 py-3 font-semibold transition-all text-white md:text-xl;
 }
 
 .primary {
