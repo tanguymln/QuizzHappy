@@ -1,59 +1,37 @@
 # QuizzHappy
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+<div>
+  <a href="https://quizzhappy.netlify.app/" target="_blank">
+    <img src="https://github.com/user-attachments/assets/4e60e46d-9aba-4fb8-a413-5c5f4fbeff3c" alt="Preview" />
+  </a>
+</div>
 
-## Development server
+QuizzHappy est une application web de quiz fun ! Explorez des thèmes variés, comme le sport ou la mythologie, et perfectionnez vos connaissances tout en vous améliorant de quiz en quiz !
 
-To start a local development server, run:
+## Fonctionnalités
 
-```bash
-ng serve
-```
+- Sélection des thèmes (sport, mythologie, etc.)
+- Choix du niveau de difficulté (facile, moyen, difficile)
+- Affichage des résultats à la fin du quiz
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Détail du projet
 
-## Code scaffolding
+- Application developpé sous angular
+- Utilisation de Tailwind CSS pour le design
+- API utilisée : https://opentdb.com/api_config.php
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
-```bash
-ng generate component component-name
-```
+1. Clonez le repository
+2. Installez les dépendances avec npm install
+3. Lancez l’application avec ng serve
+4. Accédez à l'application via http://localhost:4200
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Auteurs
 
-```bash
-ng generate --help
-```
+- [@hugolgle](https://www.github.com/hugolgle)
+- [@tanguymln](https://www.github.com/tanguymln)
 
-## Building
+# Prévisualisation
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+https://quizzhappy.netlify.app/
