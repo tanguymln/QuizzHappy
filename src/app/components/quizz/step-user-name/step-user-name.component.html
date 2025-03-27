@@ -8,7 +8,7 @@
       class="flex flex-col items-end gap-5 w-full animate__animated"
       [ngClass]="{
         'animate__fadeIn animate__faster': !isLargeScreen,
-        'animate__slideInRight animate__faster': isLargeScreen
+        'animate__bounceInUp animate__faster': isLargeScreen
       }"
       (ngSubmit)="onSubmit($event)"
     >
