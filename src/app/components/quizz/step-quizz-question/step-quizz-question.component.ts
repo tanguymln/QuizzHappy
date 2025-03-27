@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Question, QuizzService } from '../../../../service/quizz.service';
 import { RadioInputComponent } from '../../ui/radio-input/radio-input.component';
 import { ButtonComponent } from '../../ui/button/button.component';
@@ -16,6 +16,13 @@ export class StepQuizzQuestionComponent {
   numberOfQuestions: number;
   questions: Question[];
   isAnswer: boolean = false;
+
+  isLargeScreen = window.innerWidth >= 768;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isLargeScreen = event.target.innerWidth >= 768;
+  }
 
   selectedValue: string = '';
   constructor(private quizzService: QuizzService) {

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { QuizzService, Question } from './../../../../service/quizz.service';
 
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { NumberInputComponent } from '../../ui/number-input/number-input.component';
@@ -39,6 +39,13 @@ export class StepQuizzParameterComponent {
     firstname: '',
     lastname: '',
   };
+
+  isLargeScreen = window.innerWidth >= 768;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isLargeScreen = event.target.innerWidth >= 768;
+  }
 
   errorMessage: string = '';
   constructor(
