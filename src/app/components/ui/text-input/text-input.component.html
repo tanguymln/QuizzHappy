@@ -1,0 +1,10 @@
+<div>
+  <label>{{ label }}</label>
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [name]="name"
+    [value]="value"
+    (input)="onInputChange($event)"
+  />
+</div>

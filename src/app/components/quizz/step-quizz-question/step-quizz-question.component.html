@@ -1,0 +1,55 @@
+<main>
+  <section class="sidebar">
+    <h1>Question {{ currentQuestionIndex }} sur {{ numberOfQuestions }}</h1>
+    <p class="question">{{ questions[currentQuestionIndex - 1].question }}</p>
+    <p>Sélectionner une réponse</p>
+  </section>
+  <section>
+    <div
+      class="flex flex-col gap-5 animate__animated"
+      [ngClass]="{
+        'animate__fadeIn animate__faster': !isLargeScreen,
+        'animate__bounceInUp animate__faster': isLargeScreen
+      }"
+    >
+      <span
+        class="rounded-full px-4 py-1.5 font-bold w-fit"
+        [ngClass]="{
+          'bg-red-100 text-red-400':
+            questions[currentQuestionIndex - 1].difficulty === 'hard',
+          'bg-orange-100 text-orange-400':
+            questions[currentQuestionIndex - 1].difficulty === 'medium',
+          'bg-green-100 text-green-400':
+            questions[currentQuestionIndex - 1].difficulty === 'easy'
+        }"
+      >
+        {{ questions[currentQuestionIndex - 1].difficulty | titlecase }}
+      </span>
+      <app-radio-input
+        [options]="questions[currentQuestionIndex - 1].options | shuffle"
+        [name]="'question'"
+        [correctAnswer]="questions[currentQuestionIndex - 1].correctAnswer"
+        [isAnswer]="isAnswer"
+        (selectedValueChange)="onAnswerSelected($event)"
+      ></app-radio-input>
+      <div class="w-full flex items-center justify-end">
+        <app-button
+          *ngIf="!isAnswer"
+          color="primary"
+          label="Voir la réponse"
+          (click)="showAnswer()"
+        ></app-button>
+        <app-button
+          *ngIf="isAnswer"
+          color="primary"
+          (click)="onNextQuestion()"
+          [label]="
+            currentQuestionIndex === numberOfQuestions
+              ? 'Voir mon score'
+              : 'Question suivante'
+          "
+        ></app-button>
+      </div>
+    </div>
+  </section>
+</main>

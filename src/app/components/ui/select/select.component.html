@@ -1,0 +1,10 @@
+<div class="relative">
+  <label *ngIf="label">
+    {{ label }}
+  </label>
+  <select [(ngModel)]="selectedValue" (change)="onSelectChange()">
+    <option *ngFor="let option of options" [value]="option.value">
+      {{ option.label }}
+    </option>
+  </select>
+</div>

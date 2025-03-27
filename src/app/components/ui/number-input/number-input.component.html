@@ -1,0 +1,10 @@
+<div class="relative">
+  <label *ngIf="label">{{ label }}</label>
+  <input
+    type="number"
+    [min]="minValue"
+    [max]="maxValue"
+    [value]="value"
+    (input)="onInput($event)"
+  />
+</div>

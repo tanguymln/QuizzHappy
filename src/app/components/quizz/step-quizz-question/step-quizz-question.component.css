@@ -1,0 +1,3 @@
+.question {
+  @apply md:text-2xl text-xl;
+}

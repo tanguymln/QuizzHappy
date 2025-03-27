@@ -1,2 +1,24 @@
+<app-step-user-name *ngIf="step === 1"></app-step-user-name>
 
+<app-step-quizz-parameter *ngIf="step === 2"></app-step-quizz-parameter>
+
+<app-step-quizz-question *ngIf="step === 3"></app-step-quizz-question>
+
+<app-result *ngIf="step === 4"></app-result>
+
+<p
+  class="absolute top-2 left-2 md:top-10 md:left-10 font-bold text-cyan-900 md:text-xl"
+>
+  Quizz Happy 😝
+</p>
+
+<p
+  class="absolute bottom-2 left-2 md:bottom-10 md:left-10 font-bold text-cyan-900 text-xs md:text-sm"
+>
+  <a href="https://github.com/hugolgle" class="hover:text-cyan-700"
+    >&#64;Hugolgle</a
+  >&nbsp;<a href="https://github.com/tanguymln" class="hover:text-cyan-700"
+    >&#64;Tanguymln</a
+  >&nbsp;-&nbsp;©&nbsp;2025
+</p>
 <router-outlet />

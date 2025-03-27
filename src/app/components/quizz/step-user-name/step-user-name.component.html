@@ -1,0 +1,50 @@
+<main>
+  <section class="sidebar">
+    <h1>Bienvenue sur Quizz Happy 👋</h1>
+    <p>Entrez votre nom et prénom</p>
+  </section>
+  <section>
+    <form
+      class="flex flex-col items-end gap-5 w-full animate__animated"
+      [ngClass]="{
+        'animate__fadeIn animate__faster': !isLargeScreen,
+        'animate__bounceInUp animate__faster': isLargeScreen
+      }"
+      (ngSubmit)="onSubmit($event)"
+    >
+      <div class="flex flex-col w-full gap-1">
+        <div class="flex flex-col lg:flex-row gap-2 w-full">
+          <app-text-input
+            label="Prénom"
+            name="firstname"
+            [value]="firstname"
+            (valueChange)="firstname = $event"
+            placeholder="John"
+            class="w-full"
+          ></app-text-input>
+
+          <app-text-input
+            label="Nom"
+            name="lastname"
+            [value]="lastname"
+            (valueChange)="lastname = $event"
+            placeholder="Doe"
+            class="w-full"
+          ></app-text-input>
+        </div>
+
+        <div *ngIf="errorMessage !== ''" class="text-red-400 w-full">
+          <p>{{ errorMessage }}</p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end w-full">
+        <app-button
+          type="submit"
+          [label]="'Suivant'"
+          [color]="'primary'"
+        ></app-button>
+      </div>
+    </form>
+  </section>
+</main>
