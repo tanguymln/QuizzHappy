@@ -1,5 +1,5 @@
 import { QuizzService } from './../../../../service/quizz.service';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { TextInputComponent } from '../../ui/text-input/text-input.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,13 @@ export class StepUserNameComponent {
   firstname: string = '';
   lastname: string = '';
   errorMessage: string = '';
+
+  isLargeScreen = window.innerWidth >= 768;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isLargeScreen = event.target.innerWidth >= 768;
+  }
 
   constructor(private quizzService: QuizzService) {}
 

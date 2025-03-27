@@ -5,7 +5,13 @@
     <p>Sélectionner une réponse</p>
   </section>
   <section>
-    <div class="flex flex-col gap-5">
+    <div
+      class="flex flex-col gap-5 animate__animated"
+      [ngClass]="{
+        'animate__fadeIn animate__faster': !isLargeScreen,
+        'animate__slideInRight animate__faster': isLargeScreen
+      }"
+    >
       <app-radio-input
         [options]="questions[currentQuestionIndex - 1].options | shuffle"
         [name]="'question'"

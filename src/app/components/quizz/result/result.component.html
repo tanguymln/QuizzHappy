@@ -4,7 +4,13 @@
     <p>Vous avez fini ce quizz avec succès !</p>
   </section>
   <section class="items-center gap-y-4">
-    <div class="p-4 flex flex-col gap-y-4 w-full items-center">
+    <div
+      class="p-4 flex flex-col gap-y-4 w-full items-center animate__animated"
+      [ngClass]="{
+        'animate__fadeIn animate__faster': !isLargeScreen,
+        'animate__slideInRight animate__faster': isLargeScreen
+      }"
+    >
       <p class="font-black md:text-5xl text-4xl text-sky-800 text-center">
         {{ (score * 100) / numberOfQuestions }} %
       </p>
@@ -15,8 +21,8 @@
         sur
         {{ numberOfQuestions }} !
       </p>
+      <app-button color="primary" label="Recommencer" (click)="resetQuizz()">
+      </app-button>
     </div>
-    <app-button color="primary" label="Recommencer" (click)="resetQuizz()">
-    </app-button>
   </section>
 </main>
