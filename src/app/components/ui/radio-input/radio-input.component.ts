@@ -30,10 +30,6 @@ export class RadioInputComponent {
       return 'border-green-500';
     }
 
-    if (option === this.selectedValue && option !== this.correctAnswer) {
-      return 'border-red-500';
-    }
-
-    return 'border-cyan-700';
+    return 'border-red-500';
   }
 }

@@ -52,14 +52,14 @@ export class StepQuizzParameterComponent {
     try {
       const response = await firstValueFrom(this.apiService.getCategory());
       if (response.trivia_categories) {
-        this.typeOptions = response.trivia_categories.map((cat: any) => ({
+        const typesOfQuestion = response.trivia_categories.map((cat: any) => ({
           label: cat.name,
           value: cat.id,
         }));
-
-        if (this.typeOptions.length > 0) {
-          this.selectedType = this.typeOptions[0].value;
-        }
+        this.typeOptions = [
+          { label: 'Any Categories', value: '' },
+          ...typesOfQuestion,
+        ];
       }
     } catch (error) {
       console.error('Erreur lors de la récupération des catégories', error);
@@ -69,13 +69,7 @@ export class StepQuizzParameterComponent {
   async onSubmit(event: Event): Promise<void> {
     event.preventDefault();
 
-    // TODO : Mieux gérer selectedDifficulty et selectedType car pas de choix == tous types pour l'api
-    if (
-      this.selectedDifficulty !== '' &&
-      this.selectedType !== '' &&
-      this.amount >= 5 &&
-      this.amount <= 20
-    ) {
+    if (this.amount >= 5 && this.amount <= 20) {
       this.quizzService.setQuizzParameter(
         this.amount,
         this.selectedType,
