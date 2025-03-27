@@ -46,7 +46,7 @@
         ></app-button>
         <app-button
           type="submit"
-          [label]="'Démarrer le quizz'"
+          [label]="isMobile() ? 'Démarrer' : 'Démarrer le quizz'"
           [color]="'primary'"
         ></app-button>
       </div>
