@@ -25,13 +25,25 @@
       >
         {{ questions[currentQuestionIndex - 1].difficulty | titlecase }}
       </span>
+
       <app-radio-input
+        *ngIf="questions[currentQuestionIndex - 1].correctAnswer.length === 1"
         [options]="questions[currentQuestionIndex - 1].options | shuffle"
         [name]="'question'"
         [correctAnswer]="questions[currentQuestionIndex - 1].correctAnswer"
         [isAnswer]="isAnswer"
         (selectedValueChange)="onAnswerSelected($event)"
       ></app-radio-input>
+
+      <app-checkbox-input
+        *ngIf="questions[currentQuestionIndex - 1].correctAnswer.length > 1"
+        [options]="questions[currentQuestionIndex - 1].options | shuffle"
+        [name]="'question'"
+        [correctAnswer]="questions[currentQuestionIndex - 1].correctAnswer"
+        [isAnswer]="isAnswer"
+        (selectedValueChange)="onAnswerSelected($event)"
+      ></app-checkbox-input>
+
       <div class="w-full flex items-center justify-end">
         <app-button
           *ngIf="!isAnswer"

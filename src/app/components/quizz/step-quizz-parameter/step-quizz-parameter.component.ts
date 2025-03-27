@@ -30,9 +30,15 @@ export class StepQuizzParameterComponent {
     { label: 'Moyen', value: 'medium' },
     { label: 'Difficile', value: 'hard' },
   ];
+  answerOptions: { label: string; value: string }[] = [
+    { label: 'Any type', value: '' },
+    { label: 'Multiple', value: 'multiple' },
+    { label: 'True/False', value: 'boolean' },
+  ];
 
   selectedType: string = '';
   selectedDifficulty: string = '';
+  selectedAnswerType: string = '';
   amount: number = 5;
 
   userData: { firstname: string; lastname: string } = {
@@ -80,7 +86,8 @@ export class StepQuizzParameterComponent {
       this.quizzService.setQuizzParameter(
         this.amount,
         this.selectedType,
-        this.selectedDifficulty
+        this.selectedDifficulty,
+        this.selectedAnswerType
       );
 
       const response = await firstValueFrom(
@@ -88,6 +95,7 @@ export class StepQuizzParameterComponent {
           amount: this.amount,
           category: this.selectedType,
           difficulty: this.selectedDifficulty,
+          type: this.selectedAnswerType,
         })
       );
 
@@ -96,18 +104,21 @@ export class StepQuizzParameterComponent {
         const questions: Question[] = results.map(
           (item: {
             question: string;
-            correct_answer: string;
+            correct_answer: string | string[];
             incorrect_answers: string[];
             difficulty: string;
-          }) => ({
-            question: atob(item.question),
-            options: [
-              ...item.incorrect_answers.map(atob),
-              atob(item.correct_answer),
-            ],
-            correctAnswer: atob(item.correct_answer),
-            difficulty: atob(item.difficulty),
-          })
+          }) => {
+            const correctAnswers = Array.isArray(item.correct_answer)
+              ? item.correct_answer.map(atob)
+              : [atob(item.correct_answer)];
+
+            return {
+              question: atob(item.question),
+              options: [...item.incorrect_answers.map(atob), ...correctAnswers],
+              correctAnswer: [...correctAnswers],
+              difficulty: atob(item.difficulty),
+            };
+          }
         );
         this.quizzService.setQuestions(questions);
         this.quizzService.nextStep();
@@ -129,6 +140,6 @@ export class StepQuizzParameterComponent {
   }
 
   isMobile(): boolean {
-    return window.innerWidth <= 768
+    return window.innerWidth <= 768;
   }
 }

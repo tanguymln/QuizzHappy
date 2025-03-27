@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 export interface Question {
   question: string;
   options: string[];
-  correctAnswer: string;
+  correctAnswer: string[];
   difficulty: string;
 }
 
@@ -20,10 +20,12 @@ export class QuizzService {
     numberOfQuestions: number;
     categoryType: string;
     difficulty: string;
+    answerType: string;
   } = {
     numberOfQuestions: 5,
     categoryType: '',
     difficulty: '',
+    answerType: '',
   };
   questions: Question[] = [];
   userAnswers: string[] = [];
@@ -63,9 +65,20 @@ export class QuizzService {
   public setQuizzParameter(
     numberOfQuestions: number,
     categoryType: string,
-    difficulty: string
-  ): { numberOfQuestions: number; categoryType: string; difficulty: string } {
-    this.quizParameters = { numberOfQuestions, categoryType, difficulty };
+    difficulty: string,
+    answerType: string
+  ): {
+    numberOfQuestions: number;
+    categoryType: string;
+    difficulty: string;
+    answerType: string;
+  } {
+    this.quizParameters = {
+      numberOfQuestions,
+      categoryType,
+      difficulty,
+      answerType,
+    };
     return this.quizParameters;
   }
 
@@ -110,6 +123,7 @@ export class QuizzService {
       numberOfQuestions: 5,
       categoryType: '',
       difficulty: '',
+      answerType: '',
     };
     this.questions = [];
     this.userAnswers = [];

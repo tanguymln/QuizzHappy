@@ -13,7 +13,7 @@ export class CheckboxInputComponent {
   @Input() label: string = '';
   @Input() name: string = '';
   @Input() options: string[] = [];
-  @Input() correctAnswer: string = '';
+  @Input() correctAnswer: string[] = [];
   @Input() isAnswer: boolean = false;
 
   @Output() selectedValueChange = new EventEmitter<string[]>();
@@ -21,18 +21,22 @@ export class CheckboxInputComponent {
   selectedValues: string[] = [];
 
   onSelectChange(option: string) {
-    if (this.selectedValues.includes(option)) {
-      this.selectedValues = this.selectedValues.filter((val) => val !== option);
-    } else {
-      this.selectedValues.push(option);
+    if (Array.isArray(this.selectedValues)) {
+      if (this.selectedValues.includes(option)) {
+        this.selectedValues = this.selectedValues.filter(
+          (val) => val !== option
+        );
+      } else {
+        this.selectedValues.push(option);
+      }
+      this.selectedValueChange.emit(this.selectedValues);
     }
-    this.selectedValueChange.emit(this.selectedValues);
   }
 
   getOptionClass(option: string) {
     if (!this.isAnswer) return 'border-cyan-700';
 
-    if (option === this.correctAnswer) {
+    if (this.correctAnswer.includes(option)) {
       return 'border-green-500';
     }
 

@@ -4,24 +4,23 @@
     class="flex items-center p-4 gap-1 rounded-lg cursor-pointer"
     [ngClass]="[
       getOptionClass(option),
-      selectedValue === option ? 'bg-cyan-300/10' : ''
+      selectedValues.includes(option) ? 'bg-cyan-300/10' : ''
     ]"
   >
     <input
       type="checkbox"
       [id]="option"
       [value]="option"
-      [(ngModel)]="selectedValue"
       [name]="name"
-      (change)="onSelectChange()"
+      (change)="onSelectChange(option)"
       class="w-fit"
       [disabled]="isAnswer"
     />
     <span
       class="ml-2 text-sm font-bold"
       [ngClass]="{
-        'text-cyan-700': selectedValue === option,
-        'text-gray-700': selectedValue !== option
+        'text-cyan-700': selectedValues.includes(option),
+        'text-gray-700': !selectedValues.includes(option)
       }"
     >
       {{ option }}

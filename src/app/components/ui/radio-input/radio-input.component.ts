@@ -13,7 +13,7 @@ export class RadioInputComponent {
   @Input() label: string = '';
   @Input() name: string = '';
   @Input() options: string[] = [];
-  @Input() correctAnswer: string = '';
+  @Input() correctAnswer: string[] = [];
   @Input() isAnswer: boolean = false;
 
   @Output() selectedValueChange = new EventEmitter<string>();
@@ -26,7 +26,7 @@ export class RadioInputComponent {
   getOptionClass(option: string) {
     if (!this.isAnswer) return 'border-cyan-700';
 
-    if (option === this.correctAnswer) {
+    if (this.correctAnswer.includes(option)) {
       return 'border-green-500';
     }
 
