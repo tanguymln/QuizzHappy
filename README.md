@@ -2,7 +2,7 @@
 
 <div>
   <a href="https://quizzhappy.netlify.app/" target="_blank">
-    <img src="https://github.com/user-attachments/assets/4e60e46d-9aba-4fb8-a413-5c5f4fbeff3c" alt="Preview" />
+    <img src="https://github.com/user-attachments/assets/1fee8082-3c89-42be-abd8-9cff3d1b53e7" alt="Preview" />
   </a>
 </div>
 
