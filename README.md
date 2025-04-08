@@ -17,6 +17,7 @@ QuizzHappy est une application web de quiz fun ! Explorez des thèmes variés, c
 ## Détail du projet
 
 - Application developpé sous angular
+- Node version (v22.14.0)
 - Utilisation de Tailwind CSS pour le design
 - API utilisée : https://opentdb.com/api_config.php
 
